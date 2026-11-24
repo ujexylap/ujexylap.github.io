@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>r星每日吃瓜_游戏圈热点追踪与玩家社区_每日更新的娱乐观察站</title>
+<meta name="description" content="r星每日吃瓜官方网站，聚焦游戏圈热点、玩家故事与行业观察的视频内容社区，每日更新原创高清内容，陪伴每一位吃瓜玩家。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141a2e'/%3E%3Ccircle cx='24' cy='30' r='9' fill='%23ff4d6d'/%3E%3Ccircle cx='42' cy='30' r='9' fill='%23ffb703'/%3E%3Cpath d='M18 44c6 6 22 6 28 0' stroke='%23fff' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --rx-bg:#0f1322;
+  --rx-bg2:#161c30;
+  --rx-panel:#1b2238;
+  --rx-line:#2a3350;
+  --rx-text:#e9edf7;
+  --rx-muted:#9aa5c4;
+  --rx-pink:#ff4d6d;
+  --rx-amber:#ffb703;
+  --rx-cyan:#39d0d8;
+  --rx-radius:16px;
+  --rx-head-h:112px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--rx-head-h)}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--rx-bg);
+  color:var(--rx-text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+h1,h2,h3,h4{margin:0;line-height:1.3}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+
+/* ============ sticky wrapper ============ */
+.rx-sticky-wrap{position:sticky;top:0;z-index:120}
+.rx-notice{
+  background:linear-gradient(90deg,#2b1440,#3a1a2c 45%,#1a2242);
+  border-bottom:1px solid var(--rx-line);
+}
+.rx-notice-in{
+  max-width:1240px;margin:0 auto;padding:8px 20px;
+  display:flex;align-items:center;gap:12px;font-size:13px;color:#f3d8e4;
+  overflow:hidden;
+}
+.rx-notice-tag{
+  flex:none;background:var(--rx-pink);color:#fff;font-size:11px;font-weight:700;
+  padding:2px 9px;border-radius:20px;letter-spacing:.5px;
+}
+.rx-notice-track{position:relative;flex:1;overflow:hidden;height:22px}
+.rx-notice-line{
+  position:absolute;inset:0;display:flex;align-items:center;gap:8px;white-space:nowrap;
+  opacity:0;transform:translateY(100%);transition:.45s ease;
+}
+.rx-notice-line.is-on{opacity:1;transform:translateY(0)}
+.rx-notice-line b{color:var(--rx-amber)}
+.rx-notice-more{flex:none;font-size:12px;color:#cdd6ee;border:1px solid var(--rx-line);padding:2px 10px;border-radius:20px;background:transparent}
+.rx-notice-more:hover{border-color:var(--rx-pink);color:var(--rx-pink)}
+
+/* ============ header ============ */
+.rx-header{background:rgba(15,19,34,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rx-line)}
+.rx-header-in{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.rx-brand{display:flex;align-items:center;gap:10px;flex:none}
+.rx-brand-mark{
+  width:38px;height:38px;border-radius:11px;flex:none;
+  background:conic-gradient(from 200deg,var(--rx-pink),var(--rx-amber),var(--rx-cyan),var(--rx-pink));
+  display:grid;place-items:center;font-weight:800;color:#101425;font-size:17px;
+}
+.rx-brand-name{font-size:18px;font-weight:800;letter-spacing:.3px}
+.rx-brand-sub{font-size:11px;color:var(--rx-muted);letter-spacing:2px}
+.rx-nav{display:flex;gap:4px;margin-left:6px;flex-wrap:wrap}
+.rx-nav a{
+  font-size:14px;color:var(--rx-muted);padding:7px 12px;border-radius:9px;transition:.2s;
+}
+.rx-nav a:hover{color:#fff;background:var(--rx-panel)}
+.rx-head-tools{display:flex;align-items:center;gap:10px;margin-left:auto}
+.rx-search{position:relative;display:flex;align-items:center}
+.rx-search input{
+  width:190px;padding:8px 12px 8px 32px;border-radius:10px;border:1px solid var(--rx-line);
+  background:var(--rx-bg2);color:var(--rx-text);font-size:13px;outline:none;transition:.25s;
+}
+.rx-search input:focus{border-color:var(--rx-pink);width:230px;box-shadow:0 0 0 3px rgba(255,77,109,.14)}
+.rx-search svg{position:absolute;left:10px;width:14px;height:14px;fill:var(--rx-muted);pointer-events:none}
+.rx-search-tip{
+  position:absolute;top:44px;left:0;right:0;background:var(--rx-panel);border:1px solid var(--rx-line);
+  border-radius:10px;padding:8px;font-size:12.5px;color:var(--rx-muted);display:none;z-index:30;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+}
+.rx-search-tip.is-show{display:block}
+.rx-search-tip b{color:var(--rx-amber)}
+.rx-btn{
+  border:none;border-radius:10px;padding:8px 16px;font-size:13.5px;font-weight:600;transition:.2s;
+}
+.rx-btn-primary{background:linear-gradient(120deg,var(--rx-pink),#ff7a4d);color:#fff;box-shadow:0 6px 18px rgba(255,77,109,.28)}
+.rx-btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(255,77,109,.4)}
+.rx-btn-ghost{background:transparent;border:1px solid var(--rx-line);color:var(--rx-text)}
+.rx-btn-ghost:hover{border-color:var(--rx-cyan);color:var(--rx-cyan)}
+.rx-burger{display:none;background:transparent;border:1px solid var(--rx-line);border-radius:9px;width:38px;height:36px;color:var(--rx-text)}
+.rx-mobile-nav{display:none;padding:8px 20px 16px;border-top:1px solid var(--rx-line);background:var(--rx-bg)}
+.rx-mobile-nav.is-open{display:block}
+.rx-mobile-nav a{display:block;padding:10px 6px;font-size:14.5px;color:var(--rx-muted);border-bottom:1px dashed var(--rx-line)}
+.rx-mobile-nav a:last-child{border-bottom:none}
+
+/* ============ shared ============ */
+.rx-wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.rx-section{padding:56px 0}
+.rx-section-head{margin-bottom:26px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rx-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;letter-spacing:2px;
+  color:var(--rx-amber);text-transform:uppercase;margin-bottom:8px;
+}
+.rx-eyebrow::before{content:"";width:16px;height:2px;background:var(--rx-amber);border-radius:2px}
+.rx-h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:.4px}
+.rx-h2 em{font-style:normal;color:var(--rx-pink)}
+.rx-lead{color:var(--rx-muted);font-size:14.5px;max-width:660px;margin-top:6px}
+.rx-more-link{font-size:13.5px;color:var(--rx-cyan);border-bottom:1px dashed var(--rx-cyan);padding-bottom:2px}
+
+/* ============ hero ============ */
+.rx-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rx-line)}
+.rx-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(600px 320px at 12% 8%,rgba(255,77,109,.16),transparent 62%),
+    radial-gradient(620px 360px at 88% 82%,rgba(57,208,216,.14),transparent 64%);
+}
+.rx-hero-in{
+  position:relative;max-width:1240px;margin:0 auto;padding:48px 20px 56px;
+  display:grid;grid-template-columns:minmax(0,6fr) minmax(0,4fr);gap:40px;align-items:center;
+}
+.rx-hero-badge{
+  display:inline-flex;gap:8px;align-items:center;font-size:12.5px;color:var(--rx-cyan);
+  border:1px solid rgba(57,208,216,.4);background:rgba(57,208,216,.08);
+  padding:5px 13px;border-radius:30px;margin-bottom:18px;
+}
+.rx-hero-badge i{width:6px;height:6px;border-radius:50%;background:var(--rx-cyan);box-shadow:0 0 0 4px rgba(57,208,216,.2)}
+.rx-h1{font-size:clamp(38px,6vw,64px);font-weight:900;letter-spacing:1px;line-height:1.08}
+.rx-h1 span{
+  background:linear-gradient(120deg,var(--rx-amber),var(--rx-pink) 55%,var(--rx-cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.rx-hero-slogan{font-size:clamp(16px,2vw,20px);font-weight:700;margin-top:14px;color:#dfe6f7}
+.rx-hero-desc{color:var(--rx-muted);font-size:14.5px;margin-top:16px;max-width:560px}
+.rx-hero-desc strong{color:#fff}
+.rx-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.rx-hero-stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.rx-hero-stat b{display:block;font-size:26px;font-weight:800;color:var(--rx-amber);font-variant-numeric:tabular-nums}
+.rx-hero-stat small{font-size:12.5px;color:var(--rx-muted)}
+.rx-hero-visual{position:relative}
+.rx-hero-img{
+  border-radius:22px;overflow:hidden;border:1px solid var(--rx-line);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+  aspect-ratio:4/5;
+}
+.rx-hero-img img{width:100%;height:100%;object-fit:cover}
+.rx-hero-float{
+  position:absolute;left:-14px;bottom:22px;background:rgba(27,34,56,.94);
+  border:1px solid var(--rx-line);border-radius:13px;padding:10px 14px;font-size:12.5px;
+  box-shadow:0 14px 34px rgba(0,0,0,.45);max-width:220px;
+}
+.rx-hero-float b{color:var(--rx-pink)}
+
+/* ============ focus / hot videos ============ */
+.rx-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px}
+.rx-focus-card{
+  background:linear-gradient(180deg,var(--rx-panel),#151b2c);
+  border:1px solid var(--rx-line);border-radius:var(--rx-radius);overflow:hidden;
+  display:flex;flex-direction:column;transition:.25s;
+}
+.rx-focus-card:hover{transform:translateY(-4px);border-color:rgba(255,77,109,.5)}
+.rx-focus-cover{aspect-ratio:16/9;position:relative;overflow:hidden}
+.rx-focus-cover img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.rx-focus-card:hover .rx-focus-cover img{transform:scale(1.05)}
+.rx-play{
+  position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.55));
+}
+.rx-play span{
+  width:52px;height:52px;border-radius:50%;background:rgba(255,77,109,.92);display:grid;place-items:center;
+  box-shadow:0 0 0 8px rgba(255,77,109,.18);
+}
+.rx-play span::after{content:"";border-left:15px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.rx-focus-body{padding:18px 20px 20px}
+.rx-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.rx-tag{font-size:11.5px;padding:2px 9px;border-radius:20px;background:rgba(57,208,216,.12);color:var(--rx-cyan);border:1px solid rgba(57,208,216,.3)}
+.rx-tag.is-pink{background:rgba(255,77,109,.12);color:var(--rx-pink);border-color:rgba(255,77,109,.3)}
+.rx-focus-body h3{font-size:19px;margin-bottom:8px}
+.rx-focus-body p{font-size:13.5px;color:var(--rx-muted)}
+.rx-video-list{display:flex;flex-direction:column;gap:12px}
+.rx-video-item{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;
+  background:var(--rx-bg2);border:1px solid var(--rx-line);border-radius:12px;padding:14px 16px;transition:.2s;
+}
+.rx-video-item:hover{border-color:rgba(255,183,3,.45);background:#1a2138;transform:translateX(3px)}
+.rx-video-item h4{font-size:15px;margin-bottom:5px}
+.rx-video-item p{font-size:12.5px;color:var(--rx-muted)}
+.rx-video-meta{display:flex;gap:12px;font-size:11.5px;color:#7d89ab;margin-top:7px;flex-wrap:wrap}
+.rx-video-meta b{color:var(--rx-amber);font-weight:600}
+.rx-mini-cover{width:88px;aspect-ratio:16/10;border-radius:8px;overflow:hidden;flex:none}
+.rx-mini-cover img{width:100%;height:100%;object-fit:cover}
+.rx-video-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.rx-mini-btn{
+  background:transparent;border:1px solid var(--rx-line);color:var(--rx-muted);font-size:11.5px;
+  padding:3px 9px;border-radius:20px;transition:.2s;
+}
+.rx-mini-btn:hover{border-color:var(--rx-cyan);color:var(--rx-cyan)}
+.rx-mini-btn.is-like{color:var(--rx-pink);border-color:rgba(255,77,109,.6);background:rgba(255,77,109,.1)}
+.rx-mini-btn.is-save{color:var(--rx-amber);border-color:rgba(255,183,3,.6);background:rgba(255,183,3,.1)}
+
+/* ============ analysis (long copy) ============ */
+.rx-analysis{background:var(--rx-bg2);border-top:1px solid var(--rx-line);border-bottom:1px solid var(--rx-line)}
+.rx-analysis-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start}
+.rx-prose h3{font-size:18px;margin:26px 0 10px;color:#fff}
+.rx-prose h3:first-child{margin-top:0}
+.rx-prose p{font-size:14.5px;color:#b9c3dc;margin-bottom:12px}
+.rx-prose p strong{color:var(--rx-amber)}
+.rx-side-card{
+  background:var(--rx-panel);border:1px solid var(--rx-line);border-radius:14px;padding:18px;margin-bottom:16px;
+}
+.rx-side-card h4{font-size:14.5px;margin-bottom:12px;color:#fff}
+.rx-rank li{display:flex;gap:10px;align-items:center;font-size:13px;padding:8px 0;border-bottom:1px dashed var(--rx-line)}
+.rx-rank li:last-child{border-bottom:none}
+.rx-rank i{width:20px;height:20px;border-radius:6px;background:var(--rx-bg);display:grid;place-items:center;font-size:11px;font-style:normal;color:var(--rx-muted);flex:none}
+.rx-rank li:nth-child(1) i{background:var(--rx-pink);color:#fff}
+.rx-rank li:nth-child(2) i{background:var(--rx-amber);color:#141a2e}
+.rx-rank li:nth-child(3) i{background:var(--rx-cyan);color:#141a2e}
+.rx-rank span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rx-rank b{font-size:11.5px;color:var(--rx-muted);font-weight:500}
+
+/* ============ topics ============ */
+.rx-topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rx-topic-card{
+  background:var(--rx-panel);border:1px solid var(--rx-line);border-radius:var(--rx-radius);
+  padding:20px;display:flex;flex-direction:column;gap:12px;transition:.25s;min-width:0;
+}
+.rx-topic-card:hover{transform:translateY(-4px);border-color:rgba(57,208,216,.5)}
+.rx-topic-card h3{font-size:17px}
+.rx-topic-card p{font-size:13px;color:var(--rx-muted)}
+.rx-topic-status{
+  font-size:11.5px;color:var(--rx-amber);background:rgba(255,183,3,.1);
+  border:1px solid rgba(255,183,3,.3);border-radius:20px;padding:2px 10px;align-self:flex-start;
+}
+.rx-topic-cover{aspect-ratio:16/9;border-radius:10px;overflow:hidden}
+.rx-topic-cover img{width:100%;height:100%;object-fit:cover}
+.rx-topic-list li{font-size:12.5px;color:#aeb9d4;padding:6px 0 6px 14px;position:relative;border-bottom:1px dashed var(--rx-line)}
+.rx-topic-list li:last-child{border-bottom:none}
+.rx-topic-list li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--rx-cyan)}
+
+/* ============ authors ============ */
+.rx-authors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.rx-author{
+  display:flex;gap:14px;background:var(--rx-bg2);border:1px solid var(--rx-line);
+  border-radius:14px;padding:16px;transition:.22s;min-width:0;
+}
+.rx-author:hover{border-color:rgba(255,77,109,.5);background:#1a2138}
+.rx-avatar{
+  width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-weight:800;font-size:20px;color:#101425;
+}
+.rx-author-body{min-width:0}
+.rx-author-body h3{font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rx-author-body h3 small{font-size:11px;color:var(--rx-cyan);font-weight:500;background:rgba(57,208,216,.12);padding:1px 7px;border-radius:20px}
+.rx-author-field{font-size:12px;color:var(--rx-amber);margin:3px 0 6px}
+.rx-author-body p{font-size:12.5px;color:var(--rx-muted);line-height:1.65}
+.rx-author-nums{display:flex;gap:14px;font-size:11.5px;color:#7d89ab;margin-top:8px}
+.rx-author-nums b{color:#cdd6ee;font-weight:600}
+
+/* ============ comments ============ */
+.rx-comments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.rx-comment{
+  background:var(--rx-panel);border:1px solid var(--rx-line);border-radius:13px;padding:16px;
+  display:flex;flex-direction:column;gap:8px;min-width:0;
+}
+.rx-comment-head{display:flex;align-items:center;gap:9px}
+.rx-avatar-sm{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:13px;font-weight:700;color:#101425}
+.rx-comment-head b{font-size:13.5px}
+.rx-comment-num{margin-left:auto;font-size:11.5px;color:var(--rx-amber)}
+.rx-comment p{font-size:13px;color:#b9c3dc}
+.rx-comment-foot{font-size:11px;color:#6f7b9c;display:flex;gap:12px}
+.rx-stars{color:var(--rx-amber);font-size:12px;letter-spacing:1px}
+
+/* ============ news / partners / faq ============ */
+.rx-aux{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px}
+.rx-news-card{background:var(--rx-bg2);border:1px solid var(--rx-line);border-radius:var(--rx-radius);padding:22px}
+.rx-news-card h3{font-size:17px;margin-bottom:14px}
+.rx-news-list li{padding:12px 0;border-bottom:1px dashed var(--rx-line);display:flex;gap:12px}
+.rx-news-list li:last-child{border-bottom:none}
+.rx-news-date{font-size:11.5px;color:var(--rx-cyan);flex:none;width:62px;font-variant-numeric:tabular-nums}
+.rx-news-list h4{font-size:14px;margin-bottom:3px}
+.rx-news-list p{font-size:12.5px;color:var(--rx-muted)}
+.rx-partners{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.rx-partner{
+  font-size:12.5px;color:#c3cde8;border:1px solid var(--rx-line);border-radius:9px;
+  padding:8px 14px;background:var(--rx-bg);transition:.2s;
+}
+.rx-partner:hover{border-color:var(--rx-amber);color:var(--rx-amber)}
+.rx-faq details{
+  background:var(--rx-bg2);border:1px solid var(--rx-line);border-radius:11px;
+  padding:13px 16px;margin-bottom:10px;transition:.2s;
+}
+.rx-faq details[open]{border-color:rgba(255,183,3,.45)}
+.rx-faq summary{
+  cursor:pointer;font-size:14px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:flex-start;
+}
+.rx-faq summary::-webkit-details-marker{display:none}
+.rx-faq summary::before{content:"+";color:var(--rx-pink);font-weight:700;flex:none}
+.rx-faq details[open] summary::before{content:"–"}
+.rx-faq p{font-size:13px;color:var(--rx-muted);margin-top:9px;padding-left:20px}
+
+/* ============ cta / footer ============ */
+.rx-cta{
+  margin:0 auto 56px;max-width:1200px;border-radius:22px;padding:38px 34px;
+  background:
+    radial-gradient(500px 220px at 8% 0%,rgba(255,77,109,.28),transparent 65%),
+    radial-gradient(500px 220px at 92% 100%,rgba(57,208,216,.24),transparent 65%),
+    #1a2033;
+  border:1px solid var(--rx-line);
+  display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+}
+.rx-cta h2{font-size:clamp(20px,2.6vw,26px)}
+.rx-cta p{color:var(--rx-muted);font-size:13.5px;margin-top:6px;max-width:560px}
+.rx-footer{background:#0b0f1b;border-top:1px solid var(--rx-line);padding:44px 0 26px}
+.rx-footer-grid{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:26px}
+.rx-footer h4{font-size:13.5px;margin-bottom:12px;color:#fff;letter-spacing:.5px}
+.rx-footer li{font-size:12.5px;color:var(--rx-muted);padding:4px 0}
+.rx-footer li a:hover{color:var(--rx-cyan)}
+.rx-footer-desc{font-size:12.5px;color:var(--rx-muted);max-width:340px;margin-top:10px;line-height:1.75}
+.rx-footer-bottom{
+  max-width:1240px;margin:26px auto 0;padding:18px 20px 0;border-top:1px solid var(--rx-line);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#6f7b9c;
+}
+
+/* ============ toast / modal / backtop ============ */
+.rx-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);background:#222b45;
+  border:1px solid var(--rx-line);color:#fff;font-size:13px;padding:10px 20px;border-radius:30px;
+  opacity:0;pointer-events:none;transition:.3s;z-index:400;box-shadow:0 12px 30px rgba(0,0,0,.5);
+}
+.rx-toast.is-show{opacity:1;transform:translate(-50%,0)}
+.rx-modal{
+  position:fixed;inset:0;background:rgba(6,9,17,.72);backdrop-filter:blur(4px);
+  display:none;place-items:center;z-index:300;padding:20px;
+}
+.rx-modal.is-open{display:grid}
+.rx-modal-box{
+  width:min(520px,100%);background:var(--rx-panel);border:1px solid var(--rx-line);
+  border-radius:18px;padding:24px;position:relative;max-height:86vh;overflow:auto;
+}
+.rx-modal-box h3{font-size:18px;margin-bottom:8px}
+.rx-modal-box p{font-size:13.5px;color:var(--rx-muted);margin-bottom:16px}
+.rx-modal-close{
+  position:absolute;right:14px;top:12px;background:transparent;border:none;color:var(--rx-muted);
+  font-size:20px;line-height:1;
+}
+.rx-field{margin-bottom:12px}
+.rx-field label{display:block;font-size:12.5px;color:var(--rx-muted);margin-bottom:5px}
+.rx-field input,.rx-field textarea,.rx-field select{
+  width:100%;background:var(--rx-bg);border:1px solid var(--rx-line);border-radius:9px;
+  padding:9px 12px;color:var(--rx-text);font-size:13.5px;outline:none;font-family:inherit;
+}
+.rx-field input:focus,.rx-field textarea:focus,.rx-field select:focus{border-color:var(--rx-pink)}
+.rx-backtop{
+  position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;
+  background:var(--rx-panel);border:1px solid var(--rx-line);color:var(--rx-text);
+  display:grid;place-items:center;font-size:15px;opacity:0;pointer-events:none;transition:.28s;z-index:200;
+}
+.rx-backtop.is-show{opacity:1;pointer-events:auto}
+.rx-backtop:hover{border-color:var(--rx-pink);color:var(--rx-pink)}
+
+/* ============ responsive ============ */
+@media (max-width:1020px){
+  .rx-hero-in{grid-template-columns:1fr;gap:30px}
+  .rx-hero-img{aspect-ratio:16/10}
+  .rx-split{grid-template-columns:1fr}
+  .rx-analysis-grid{grid-template-columns:1fr}
+  .rx-topics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rx-authors{grid-template-columns:1fr}
+  .rx-comments{grid-template-columns:1fr}
+  .rx-aux{grid-template-columns:1fr}
+  .rx-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rx-nav{display:none}
+  .rx-burger{display:block;margin-left:auto}
+  .rx-head-tools{margin-left:0}
+}
+@media (max-width:720px){
+  :root{--rx-head-h:104px}
+  .rx-head-tools .rx-search input{width:130px}
+  .rx-head-tools .rx-search input:focus{width:150px}
+  .rx-head-tools .rx-btn-primary{display:none}
+  .rx-topics{grid-template-columns:1fr}
+  .rx-footer-grid{grid-template-columns:1fr}
+  .rx-notice-more{display:none}
+  .rx-section{padding:42px 0}
+  .rx-hero-stats{gap:18px}
+  .rx-hero-stat b{font-size:22px}
+  .rx-cta{padding:28px 22px;margin:0 16px 42px}
+  .rx-video-item{grid-template-columns:1fr}
+  .rx-mini-cover{width:100%;aspect-ratio:16/9}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="rx-sticky-wrap">
+  <div class="rx-notice">
+    <div class="rx-notice-in">
+      <span class="rx-notice-tag">最新公告</span>
+      <div class="rx-notice-track" id="rxNoticeTrack">
+        <div class="rx-notice-line is-on">「吃瓜雷达」第 48 期上线：<b>年度游戏圈十大反转事件</b> 完整梳理</div>
+        <div class="rx-notice-line">「玩家故事」专题新增 3 位创作者投稿，<b>长期征集中</b></div>
+        <div class="rx-notice-line">11 月口碑榜更新，<b>新增「实机演示」评测维度</b></div>
+      </div>
+      <button class="rx-notice-more" type="button" id="rxNoticeNext">下一条</button>
+    </div>
+  </div>
+
+  <header class="rx-header">
+    <div class="rx-header-in">
+      <a href="#rxTop" class="rx-brand">
+        <span class="rx-brand-mark">R</span>
+        <span>
+          <span class="rx-brand-name">r星每日吃瓜</span><br>
+          <span class="rx-brand-sub">DAILY MELON</span>
+        </span>
+      </a>
+      <nav class="rx-nav">
+        <a href="#rxHot">热门吃瓜</a>
+        <a href="#rxAnalysis">深度解析</a>
+        <a href="#rxTopics">专题企划</a>
+        <a href="#rxAuthors">创作者</a>
+        <a href="#rxComments">玩家评价</a>
+        <a href="#rxFaq">帮助中心</a>
+      </nav>
+      <div class="rx-head-tools">
+        <div class="rx-search">
+          <svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
+          <input type="search" id="rxSearch" placeholder="搜索吃瓜关键词" aria-label="搜索站内内容">
+          <div class="rx-search-tip" id="rxSearchTip"></div>
+        </div>
+        <button class="rx-btn rx-btn-primary" type="button" data-modal="submit">我要投稿</button>
+        <button class="rx-burger" type="button" id="rxBurger" aria-label="展开导航">☰</button>
+      </div>
+    </div>
+    <div class="rx-mobile-nav" id="rxMobileNav">
+      <a href="#rxHot">热门吃瓜</a>
+      <a href="#rxAnalysis">深度解析</a>
+      <a href="#rxTopics">专题企划</a>
+      <a href="#rxAuthors">创作者</a>
+      <a href="#rxComments">玩家评价</a>
+      <a href="#rxFaq">帮助中心</a>
+    </div>
+  </header>
+</div>
+
+<main id="rxTop">
+
+  <!-- ================= HERO ================= -->
+  <section class="rx-hero" aria-label="品牌首屏">
+    <div class="rx-hero-in">
+      <div>
+        <span class="rx-hero-badge"><i></i>官方网站 · 每日更新 · 原创高清</span>
+        <h1 class="rx-h1"><span>r星每日吃瓜</span></h1>
+        <p class="rx-hero-slogan">把游戏圈的热闹，做成值得反复看的内容</p>
+        <p class="rx-hero-desc">
+          作为深耕游戏娱乐垂直领域的视频品牌，<strong>r星每日吃瓜</strong>以「官网级」内容标准记录玩家社区的真实动向：
+          从一场发布会的细节拆解，到一条玩家评论里的温度，我们用影像与文字把碎片信息整理成可以信赖的观察。
+        </p>
+        <div class="rx-hero-actions">
+          <a href="#rxHot" class="rx-btn rx-btn-primary">看今日热门</a>
+          <a href="#rxTopics" class="rx-btn rx-btn-ghost">浏览专题企划</a>
+          <button class="rx-btn rx-btn-ghost" type="button" data-modal="submit">加入创作社区</button>
+        </div>
+        <div class="rx-hero-stats">
+          <div class="rx-hero-stat"><b data-count="1286">0</b><small>累计原创视频（期）</small></div>
+          <div class="rx-hero-stat"><b data-count="46">0</b><small>签约创作者（位）</small></div>
+          <div class="rx-hero-stat"><b data-count="92">0</b><small>内容好评率（%）</small></div>
+        </div>
+      </div>
+      <div class="rx-hero-visual">
+        <div class="rx-hero-img">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23161c30'/%3E%3Cstop offset='1' stop-color='%232b1a35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='480' height='600' fill='url(%23g1)'/%3E%3Ccircle cx='120' cy='130' r='150' fill='%23ff4d6d' opacity='0.22'/%3E%3Ccircle cx='390' cy='470' r='170' fill='%2339d0d8' opacity='0.18'/%3E%3Crect x='60' y='250' width='360' height='230' rx='18' fill='%230f1322' stroke='%233a4463' stroke-width='2'/%3E%3Crect x='86' y='280' width='150' height='14' rx='7' fill='%23ffb703'/%3E%3Crect x='86' y='312' width='280' height='9' rx='4.5' fill='%235a6584'/%3E%3Crect x='86' y='332' width='230' height='9' rx='4.5' fill='%235a6584'/%3E%3Crect x='86' y='368' width='308' height='76' rx='10' fill='%231b2238'/%3E%3Ccircle cx='130' cy='406' r='22' fill='%23ff4d6d'/%3E%3Cpath d='M124 396l18 10-18 10z' fill='white'/%3E%3Crect x='168' y='392' width='180' height='8' rx='4' fill='%2339d0d8'/%3E%3Crect x='168' y='410' width='120' height='8' rx='4' fill='%235a6584'/%3E%3Ctext x='60' y='200' font-family='sans-serif' font-size='58' font-weight='800' fill='%23ffffff'%3ER-STAR%3C/text%3E%3Ctext x='62' y='240' font-family='sans-serif' font-size='20' fill='%23ffb703'%3EDAILY MELON REPORT%3C/text%3E%3C/svg%3E" alt="r星每日吃瓜官网首屏主视觉：深色演播风格画面与热点数据面板" width="480" height="600">
+        </div>
+        <div class="rx-hero-float">
+          今日热榜榜首：<b>年度十大反转事件</b><br>
+          已更新 · 12 分钟前
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOT / FOCUS ================= -->
+  <section class="rx-section" id="rxHot">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Hot &amp; Focus</span>
+          <h2 class="rx-h2">今日热门吃瓜 · <em>焦点与条目</em></h2>
+          <p class="rx-lead">编辑部每天从上百条线索里筛出值得讨论的那几条，配上一手资料与原片回看，让吃瓜不停留在标题上。</p>
+        </div>
+        <a href="#rxComments" class="rx-more-link">看玩家怎么聊</a>
+      </div>
+
+      <div class="rx-split">
+        <article class="rx-focus-card">
+          <div class="rx-focus-cover">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='f1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23311d3f'/%3E%3Cstop offset='1' stop-color='%23141a2e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23f1)'/%3E%3Cg opacity='0.8'%3E%3Crect x='48' y='60' width='120' height='120' rx='14' fill='%23ff4d6d' opacity='0.28'/%3E%3Crect x='188' y='60' width='120' height='120' rx='14' fill='%23ffb703' opacity='0.24'/%3E%3Crect x='328' y='60' width='120' height='120' rx='14' fill='%2339d0d8' opacity='0.22'/%3E%3C/g%3E%3Cpath d='M60 280 L160 210 L250 250 L340 170 L430 205 L520 130 L600 160' stroke='%23ffb703' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='520' cy='130' r='10' fill='%23ffb703'/%3E%3Ctext x='48' y='330' font-family='sans-serif' font-size='26' font-weight='700' fill='%23ffffff'%3E年度十大反转事件%3C/text%3E%3C/svg%3E" alt="年度游戏圈十大反转事件专题焦点封面，数据曲线与色块构图" width="640" height="360">
+            <div class="rx-play"><span></span></div>
+          </div>
+          <div class="rx-focus-body">
+            <div class="rx-tags">
+              <span class="rx-tag is-pink">焦点专题</span>
+              <span class="rx-tag">行业观察</span>
+              <span class="rx-tag">38 分钟</span>
+            </div>
+            <h3>年度十大反转事件：从爆料到实机，我们重新核对了每一条时间线</h3>
+            <p>把一年的热闹重新排一遍序：哪些是真爆料，哪些只是一场误会。本期用长视频加时间轴的方式完整复盘，附编辑部采访手记。</p>
+            <div class="rx-video-meta">
+              <span>主创：<b>老K吃瓜</b></span>
+              <span>播放 <b>42.6万</b></span>
+              <span>点赞 <b>1.8万</b></span>
+            </div>
+            <div class="rx-video-actions">
+              <button class="rx-mini-btn" type="button" data-like>👍 点赞</button>
+              <button class="rx-mini-btn" type="button" data-save>♡ 收藏</button>
+              <button class="rx-mini-btn" type="button" data-copy>复制链接</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="rx-video-list">
+          <article class="rx-video-item">
+            <div>
+              <h4>发布会逐帧拆解：那 30 秒镜头里藏了什么</h4>
+              <p>逐帧看细节，逐句对字幕，附官方原片时间码对照。</p>
+              <div class="rx-video-meta"><span>阿七观察</span><span>播放 <b>28.3万</b></span><span>收藏 <b>6210</b></span></div>
+              <div class="rx-video-actions">
+                <button class="rx-mini-btn" type="button" data-like>👍 点赞</button>
+                <button class="rx-mini-btn" type="button" data-save>♡ 收藏</button>
+                <button class="rx-mini-btn" type="button" data-report>反馈</button>
+              </div>
+            </div>
+            <div class="rx-mini-cover">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%23141a2e'/%3E%3Crect x='14' y='22' width='132' height='56' rx='7' fill='%23242e4a' stroke='%2339d0d8' stroke-width='2'/%3E%3Ccircle cx='46' cy='50' r='13' fill='%2339d0d8' opacity='0.85'/%3E%3Crect x='70' y='40' width='58' height='6' rx='3' fill='%23ffb703'/%3E%3Crect x='70' y='54' width='40' height='6' rx='3' fill='%235a6584'/%3E%3C/svg%3E" alt="发布会逐帧拆解视频缩略图，播放器界面构图" width="160" height="100">
+            </div>
+          </article>
+
+          <article class="rx-video-item">
+            <div>
+              <h4>玩家评论区的三个夜晚：我们翻了 8000 条留言</h4>
+              <p>从争论到和解，评论区里的情绪曲线比剧情还精彩。</p>
+              <div class="rx-video-meta"><span>小满剪辑室</span><span>播放 <b>19.7万</b></span><span>收藏 <b>4432</b></span></div>
+              <div class="rx-video-actions">
+                <button class="rx-mini-btn" type="button" data-like>👍 点赞</button>
+                <button class="rx-mini-btn" type="button" data-save>♡ 收藏</button>
+                <button class="rx-mini-btn" type="button" data-report>反馈</button>
+              </div>
+            </div>
+            <div class="rx-mini-cover">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%23281a33'/%3E%3Ccircle cx='52' cy='46' r='20' fill='%23ff4d6d' opacity='0.35'/%3E%3Ccircle cx='92' cy='58' r='14' fill='%23ffb703' opacity='0.4'/%3E%3Crect x='20' y='74' width='120' height='7' rx='3.5' fill='%23ffffff' opacity='0.25'/%3E%3Crect x='20' y='20' width='52' height='7' rx='3.5' fill='%23ffffff' opacity='0.25'/%3E%3C/svg%3E" alt="玩家评论区观察视频缩略图，留言气泡抽象的图形" width="160" height="100">
+            </div>
+          </article>
+
+          <article class="rx-video-item">
+            <div>
+              <h4>口碑榜第二期：这次我们把评分细则公开了</h4>
+              <p>五个维度、二十条细则，评分标准全部写在画面里。</p>
+              <div class="rx-video-meta"><span>编辑部值班</span><span>播放 <b>15.2万</b></span><span>收藏 <b>3877</b></span></div>
+              <div class="rx-video-actions">
+                <button class="rx-mini-btn" type="button" data-like>👍 点赞</button>
+                <button class="rx-mini-btn" type="button" data-save>♡ 收藏</button>
+                <button class="rx-mini-btn" type="button" data-report>反馈</button>
+              </div>
+            </div>
+            <div class="rx-mini-cover">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%23121a2c'/%3E%3Crect x='24' y='56' width='20' height='26' rx='4' fill='%2339d0d8'/%3E%3Crect x='54' y='42' width='20' height='40' rx='4' fill='%23ffb703'/%3E%3Crect x='84' y='28' width='20' height='54' rx='4' fill='%23ff4d6d'/%3E%3Crect x='114' y='48' width='20' height='34' rx='4' fill='%23818cb0'/%3E%3C/svg%3E" alt="口碑榜评分细则视频缩略图，柱状评分图形" width="160" height="100">
+            </div>
+          </article>
+
+          <article class="rx-video-item">
+            <div>
+              <h4>新人创作者首播记录：一个人做完整场直播</h4>
+              <p>设备清单、流程表、翻车时刻，全部原样保留。</p>
+              <div class="rx-video-meta"><span>面包不加班</span><span>播放 <b>11.4万</b></span><span>收藏 <b>2955</b></span></div>
+              <div class="rx-video-actions">
+                <button class="rx-mini-btn" type="button" data-like>👍 点赞</button>
+                <button class="rx-mini-btn" type="button" data-save>♡ 收藏</button>
+                <button class="rx-mini-btn" type="button" data-report>反馈</button>
+              </div>
+            </div>
+            <div class="rx-mini-cover">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'%3E%3Crect width='160' height='100' fill='%231c2238'/%3E%3Crect x='30' y='24' width='100' height='52' rx='8' fill='%230f1322' stroke='%23ffb703' stroke-width='2'/%3E%3Ccircle cx='56' cy='50' r='9' fill='%23ff4d6d'/%3E%3Crect x='74' y='42' width='42' height='6' rx='3' fill='%23697characters' /%3E%3Crect x='74' y='54' width='28' height='6' rx='3' fill='%235a6584'/%3E%3C/svg%3E" alt="新人创作者首播记录视频缩略图，直播设备图形" width="160" height="100">
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ANALYSIS (800+ words) ================= -->
+  <section class="rx-section rx-analysis" id="rxAnalysis">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Deep Dive</span>
+          <h2 class="rx-h2">r星每日吃瓜 · <em>关键词深度解析</em></h2>
+          <p class="rx-lead">为什么是「每日」，为什么是「吃瓜」，这两个词背后其实是一整套内容方法论。</p>
+        </div>
+      </div>
+      <div class="rx-analysis-grid">
+        <div class="rx-prose">
+          <h3>一、先说「r星」：一个被玩家反复叫顺口的名字</h3>
+          <p>「r星」这三个字符在游戏玩家群体里有着长期的使用惯性，它既指向某种发布会前的紧张感，也指向社区里那股“等一个消息”的集体情绪。r星每日吃瓜从创立第一天起，就没有把自己定义成单纯的消息搬运站，而是一个对信息负责的<strong>原创视频内容品牌</strong>。我们每天会收到上百条线索，但最终只有不到百分之五能进入当天的选题池，剩下的会被放进素材库，等关键证据补齐之后再上线，这就是「每日」二字背后的克制。</p>
+          <p>对一家持续运营的视频品牌来说，稳定更新是一种信用。r星每日吃瓜的官网每天上午十点前会更新当日热点清单，晚间八点更新一条主编精选长内容，周末追加一期「吃瓜周报」。这样固定的节奏让很多玩家形成了习惯，有人会在午休时打开页面看今天有哪些新条目，也有人把周报当作一周的收尾节目。这种陪伴感不是靠口号喊出来的，是靠每天准时出现的内容积累出来的。</p>
+          <p>内容生态的搭建同样需要一个清晰的分层。我们把页面内容分成焦点、条目、专题、作者、评价五个层级：焦点用来承载当天讨论度最高的单条内容；条目负责覆盖更多线索，保证信息密度；专题把零散事件整理成有结构的系列；作者层把镜头后面的人推到台前；评价层则把玩家真实的声音保留下来。五个层级互相咬合，才让一个视频品牌门户具备可读性与可持续性。</p>
+
+          <h3>二、再说「吃瓜」：从围观看热闹到看懂门道</h3>
+          <p>「吃瓜」在网络语言里天然带着轻松、围观、讨论的属性，但真正让一个吃瓜社区拥有长期生命力的，是它能不能把围观转化成理解。r星每日吃瓜在内容制作上有一套自己的规矩：第一，任何一条爆料类内容都必须标注信息来源与时间戳，能附官方原片的绝不只用截图；第二，涉及争议的事件，编导必须同时收录至少两种立场的玩家评论，不允许单边陈述；第三，所有评分类内容都公开评分细则，玩家可以逐条对照。</p>
+          <p>这套规矩看起来像编辑部内部的小事，实际上决定了一个社区的口碑。在垂直领域做内容，用户对真假非常敏感，一次失准就会迅速消耗信任。r星每日吃瓜之所以能在游戏娱乐这个细分赛道里持续获得关注，靠的正是这种看起来很“笨”的做法：多花两小时核对时间线，多剪三十秒的上下文，多听三四位玩家的意见。品质不是形容词，是一件一件具体的事堆出来的。</p>
+          <p>同时，「吃瓜」也不该只有争议与冲突。我们花了相当多的篇幅去做治愈向、故事向的内容：一位玩家在直播间里等到了十年的老朋友，一个玩家自制的手柄外壳被原作者转发，一场社区自发组织的公益观影。这些片段播放量未必最高，但收藏率高、评论长，很多用户会在下面写很长的留言。我们相信，一个真正值得信赖的内容平台，需要在热闹与温度之间保持平衡，这也是「陪伴」这个词在这份内容生态里的具体含义。</p>
+
+          <h3>三、视频品牌官网该有的样子：结构、品质与社区活力</h3>
+          <p>很多同类型页面会把所有内容塞进一个无限下拉的流里，短时间看起来信息量很大，但用户很难建立空间感。r星每日吃瓜的官网采用的是分区块叙事：首屏交代品牌定位与三个核心数据，热门区用焦点加条目的组合快速给出当天结论，深度区负责解释来龙去脉，专题区提供可长期追更的系列，作者区展示内容生态里的人，评价区与帮助中心负责回应与答疑。这样的结构让第一次到访的用户也能在五分钟内理解这个站点在做什么。</p>
+          <p>视觉上我们选择了深色高级灰搭配荧光粉与琥珀色的组合，一方面贴合游戏娱乐的语境，另一方面也让重点信息在长页面里依然跳得出来。所有封面都使用原创图形与统一的构图语言：数据曲线、播放器界面、评论区气泡、评分柱状图，每种图形对应一类内容形态，用户看到图形就能预判内容类型。高清封面与清晰的字号层级，是官方网站与随手拼贴页面的分界线。</p>
+          <p>社区活力则来自持续的互动设计。每条内容都可以点赞、收藏、复制链接，作者卡可以查看详细简介，帮助中心用可展开的问答收纳了投稿、版权、合作、反馈等常见问题。这些小功能看起来不起眼，但它们让用户从“看”变成“参与”。一个内容品牌的影响力，往往就是在一次次的点赞、一次次的投稿、一次次的反馈中被慢慢放大的。我们也会定期举办主题征集与年度投票，让更多普通玩家有机会站到镜头前。</p>
+
+          <h3>四、关于未来：把每日更新做成一件长久的事</h3>
+          <p>r星每日吃瓜目前由编辑部与签约创作者共同供稿，未来会继续扩充多元题材，包括行业观察、创作幕后、玩家访谈、城市探索中的游戏文化角落等。我们也在筹备一档面向新人的训练营，把选题、拍摄、剪辑、审核的流程拆解成可以学习的课程，帮助更多对内容创作有兴趣的玩家完成第一次投稿。社会责任对我们来说不是一句口号，而是让更多人有机会被看见、被听见。</p>
+          <p>如果你是长期关注游戏圈动态的玩家，欢迎把这里当作每天路过的一站；如果你是创作者，欢迎把你的作品上传到投稿入口；如果你是品牌或机构，合作邮箱一直开着。r星每日吃瓜希望成为那个每天准时出现、说话有依据、态度有温度的内容伙伴。热闹会过去，但记录下来的东西会留下，这就是我们坚持做这件事的理由。</p>
+        </div>
+        <aside>
+          <div class="rx-side-card">
+            <h4>今日吃瓜热度榜</h4>
+            <ul class="rx-rank">
+              <li><i>1</i><span>年度十大反转事件复盘</span><b>42.6万</b></li>
+              <li><i>2</i><span>发布会逐帧拆解</span><b>28.3万</b></li>
+              <li><i>3</i><span>评论区三个夜晚</span><b>19.7万</b></li>
+              <li><i>4</i><span>口碑榜细则公开</span><b>15.2万</b></li>
+              <li><i>5</i><span>新人首播全记录</span><b>11.4万</b></li>
+            </ul>
+          </div>
+          <div class="rx-side-card">
+            <h4>站内快速入口</h4>
+            <p style="font-size:13px;color:#aeb9d4;margin-bottom:12px;">想参与内容生产？从这里开始。</p>
+            <button class="rx-btn rx-btn-primary" type="button" data-modal="submit" style="width:100%;margin-bottom:10px;">投稿 / 报名</button>
+            <button class="rx-btn rx-btn-ghost" type="button" data-modal="contact" style="width:100%;">联系编辑部</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOPICS ================= -->
+  <section class="rx-section" id="rxTopics">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Series</span>
+          <h2 class="rx-h2">专题企划 · <em>值得追更的系列</em></h2>
+          <p class="rx-lead">比单条视频更长一点的东西：一个系列、一条线索、一群人的持续记录。</p>
+        </div>
+        <a href="#rxAuthors" class="rx-more-link">认识系列主创</a>
+      </div>
+      <div class="rx-topics">
+        <article class="rx-topic-card">
+          <div class="rx-topic-cover">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23201830'/%3E%3Cpath d='M0 200 Q120 120 240 170 T480 140' stroke='%23ff4d6d' stroke-width='5' fill='none'/%3E%3Ccircle cx='120' cy='150' r='7' fill='%23ffb703'/%3E%3Ccircle cx='300' cy='160' r='7' fill='%2339d0d8'/%3E%3Ctext x='30' y='60' font-family='sans-serif' font-size='24' font-weight='700' fill='%23ffffff'%3E时间线复盘%3C/text%3E%3C/svg%3E" alt="时间线复盘专题封面，曲线与节点构图" width="480" height="270">
+          </div>
+          <span class="rx-topic-status">更新中 · 已上线 6 期</span>
+          <h3>吃瓜时间线：把一件事从头到尾讲清楚</h3>
+          <p>每期只讲一条线索，从最早的一条公开信息开始，到最新一次官方回应结束，中途所有节点附时间戳。</p>
+          <ul class="rx-topic-list">
+            <li>第 6 期：一场发布会的 72 小时</li>
+            <li>第 5 期：社区共创活动的完整始末</li>
+            <li>第 4 期：年度口碑争议事件梳理</li>
+          </ul>
+        </article>
+
+        <article class="rx-topic-card">
+          <div class="rx-topic-cover">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%2316202c'/%3E%3Ccircle cx='150' cy='130' r='58' fill='%2339d0d8' opacity='0.28'/%3E%3Ccircle cx='330' cy='150' r='44' fill='%23ffb703' opacity='0.32'/%3E%3Crect x='60' y='210' width='360' height='8' rx='4' fill='%23ffffff' opacity='0.2'/%3E%3Ctext x='30' y='56' font-family='sans-serif' font-size='24' font-weight='700' fill='%23ffffff'%3E玩家故事%3C/text%3E%3C/svg%3E" alt="玩家故事专题封面，人物抽象圆形构图" width="480" height="270">
+          </div>
+          <span class="rx-topic-status">长期征集 · 本季 4 篇</span>
+          <h3>玩家故事：镜头前的普通人</h3>
+          <p>不看粉丝数，只看故事。我们走进玩家的工作室、客厅与通勤路，记录他们与游戏相处的真实方式。</p>
+          <ul class="rx-topic-list">
+            <li>下班后两小时的独立开发者</li>
+            <li>把通勤时间用来听播客的策划</li>
+            <li>在县城开电玩店的第九年</li>
+          </ul>
+        </article>
+
+        <article class="rx-topic-card">
+          <div class="rx-topic-cover">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%232a1c2e'/%3E%3Crect x='50' y='80' width='90' height='110' rx='10' fill='%23ff4d6d' opacity='0.4'/%3E%3Crect x='160' y='60' width='90' height='130' rx='10' fill='%23ffb703' opacity='0.38'/%3E%3Crect x='270' y='95' width='90' height='95' rx='10' fill='%2339d0d8' opacity='0.36'/%3E%3Crect x='380' y='70' width='50' height='120' rx='10' fill='%23818cb0' opacity='0.4'/%3E%3Ctext x='30' y='40' font-family='sans-serif' font-size='22' font-weight='700' fill='%23ffffff'%3E口碑观察%3C/text%3E%3C/svg%3E" alt="口碑观察专题封面，多列评分柱状图构图" width="480" height="270">
+          </div>
+          <span class="rx-topic-status">双周更新 · 细则公开</span>
+          <h3>口碑观察：评分这件事要讲道理</h3>
+          <p>五个维度、二十条细则，每一期都公开打分过程，并邀请玩家参与复核，让评分变成可以讨论的公共议题。</p>
+          <ul class="rx-topic-list">
+            <li>第二期：实机演示完整度评估</li>
+            <li>第一期：社区运营响应速度观察</li>
+            <li>玩家复核通道已开启</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUTHORS ================= -->
+  <section class="rx-section" id="rxAuthors">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Creators</span>
+          <h2 class="rx-h2">创作者矩阵 · <em>镜头后面的人</em></h2>
+          <p class="rx-lead">r星每日吃瓜的内容由编辑部与签约创作者共同完成，他们是这个社区最稳定的那部分力量。</p>
+        </div>
+      </div>
+      <div class="rx-authors">
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#ff4d6d,#ffb703)">K</div>
+          <div class="rx-author-body">
+            <h3>老K吃瓜 <small>主编</small></h3>
+            <p class="rx-author-field">擅长：行业观察 · 事件复盘 · 长视频叙事</p>
+            <p>八年前从论坛写手做起，习惯先翻资料再开口。喜欢把一条线索拆成时间轴，也喜欢在片尾留一段安静的独白。相信慢一点没关系，说清楚最重要。</p>
+            <div class="rx-author-nums"><span>作品 <b>312</b></span><span>粉丝 <b>18.4万</b></span><span>收藏 <b>9.2万</b></span></div>
+          </div>
+        </article>
+
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#39d0d8,#818cb0)">七</div>
+          <div class="rx-author-body">
+            <h3>阿七观察 <small>拆解组</small></h3>
+            <p class="rx-author-field">擅长：逐帧拆解 · 视听语言 · 细节考据</p>
+            <p>做过五年后期，眼睛对时间码特别敏感。最享受的事情是在三十秒的画面里找到别人漏掉的那一帧，然后花一整天把它的来龙去脉讲明白。</p>
+            <div class="rx-author-nums"><span>作品 <b>187</b></span><span>粉丝 <b>12.1万</b></span><span>收藏 <b>6.7万</b></span></div>
+          </div>
+        </article>
+
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#ffb703,#ff7a4d)">满</div>
+          <div class="rx-author-body">
+            <h3>小满剪辑室 <small>短内容组</small></h3>
+            <p class="rx-author-field">擅长：评论区观察 · 短视频节奏 · 情绪剪辑</p>
+            <p>擅长从几千条留言里找到最有共鸣的那一句，然后用两分钟讲完一个故事。剪辑台前常备一壶茶，说灵感都是等出来的，不是赶出来的。</p>
+            <div class="rx-author-nums"><span>作品 <b>264</b></span><span>粉丝 <b>15.8万</b></span><span>收藏 <b>8.1万</b></span></div>
+          </div>
+        </article>
+
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#818cb0,#39d0d8)">面</div>
+          <div class="rx-author-body">
+            <h3>面包不加班 <small>新人企划</small></h3>
+            <p class="rx-author-field">擅长：新人记录 · 创作幕后 · 设备实测</p>
+            <p>从观众席走到镜头前只用了一年。喜欢把翻车时刻原样保留，因为比起完美的成品，她更愿意分享一次真实的尝试，也常给新人回私信。</p>
+            <div class="rx-author-nums"><span>作品 <b>96</b></span><span>粉丝 <b>7.6万</b></span><span>收藏 <b>3.4万</b></span></div>
+          </div>
+        </article>
+
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#ff4d6d,#39d0d8)">山</div>
+          <div class="rx-author-body">
+            <h3>半山听雨 <small>访谈组</small></h3>
+            <p class="rx-author-field">擅长：玩家访谈 · 城市探索 · 纪录短片</p>
+            <p>做访谈时最常问的问题是“当时你在想什么”。走过十几个城市，记录过县城电玩店、深夜网吧和社区游戏角，相信普通人的故事最有力量。</p>
+            <div class="rx-author-nums"><span>作品 <b>143</b></span><span>粉丝 <b>9.9万</b></span><span>收藏 <b>5.2万</b></span></div>
+          </div>
+        </article>
+
+        <article class="rx-author">
+          <div class="rx-avatar" style="background:linear-gradient(135deg,#ffb703,#39d0d8)">值</div>
+          <div class="rx-author-body">
+            <h3>编辑部值班 <small>官方账号</small></h3>
+            <p class="rx-author-field">擅长：官方发布 · 口碑榜 · 平台公告</p>
+            <p>r星每日吃瓜的官方发布通道，负责口碑榜、规则说明、活动公告与辟谣信息。每一条内容都经过双人复核，欢迎在评论区指正与补充。</p>
+            <div class="rx-author-nums"><span>作品 <b>284</b></span><span>粉丝 <b>21.3万</b></span><span>收藏 <b>10.8万</b></span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMENTS ================= -->
+  <section class="rx-section rx-analysis" id="rxComments">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Voices</span>
+          <h2 class="rx-h2">玩家评价 · <em>来自社区的真实声音</em></h2>
+          <p class="rx-lead">我们不删差评，只删广告。以下内容来自站内评论区与投稿邮件，经本人授权整理发布。</p>
+        </div>
+        <button class="rx-btn rx-btn-ghost" type="button" data-modal="submit">写下你的评价</button>
+      </div>
+      <div class="rx-comments">
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#ff4d6d">橙</span>
+            <b>橙子汽水</b>
+            <span class="rx-comment-num">★★★★★</span>
+          </div>
+          <p>一直觉得游戏圈的爆料太多太乱，这个站最难得的是每条都标了来源和时间，看的时候心里有底。年度复盘那期我从头看到尾，两小时一点也不觉得长。</p>
+          <div class="rx-comment-foot"><span>2 天前</span><span>点赞 328</span></div>
+        </article>
+
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#ffb703">夜</span>
+            <b>夜航船上的猫</b>
+            <span class="rx-comment-num">★★★★☆</span>
+          </div>
+          <p>内容质量确实不错，就是希望能多做一些新人向的入门内容。我表弟刚入坑，第一次打开有点不知道从哪看起，如果能有个新手导航就更好了。</p>
+          <div class="rx-comment-foot"><span>4 天前</span><span>点赞 196</span></div>
+        </article>
+
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#39d0d8">阿</span>
+            <b>阿木木不孤单</b>
+            <span class="rx-comment-num">★★★★★</span>
+          </div>
+          <p>投稿过两次，编辑回信挺认真的，指出了我脚本里逻辑跳步的地方，还给了参考方向。这种愿意花时间带新人的团队，值得一直关注。</p>
+          <div class="rx-comment-foot"><span>6 天前</span><span>点赞 412</span></div>
+        </article>
+
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#818cb0">慢</span>
+            <b>慢慢来比较快</b>
+            <span class="rx-comment-num">★★★★☆</span>
+          </div>
+          <p>喜欢玩家故事系列，很真实，不是那种精心摆拍的采访。县城电玩店那期看完我给老板打了个电话，聊了半小时，感觉回到了小时候。</p>
+          <div class="rx-comment-foot"><span>1 周前</span><span>点赞 267</span></div>
+        </article>
+
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#ff4d6d">电</span>
+            <b>电子羊会做梦</b>
+            <span class="rx-comment-num">★★★★★</span>
+          </div>
+          <p>口碑榜把细则公开这件事，我觉得是整个站点最加分的地方。就算评分跟我心里不一样，我也能看懂为什么，这就够了。</p>
+          <div class="rx-comment-foot"><span>1 周前</span><span>点赞 355</span></div>
+        </article>
+
+        <article class="rx-comment">
+          <div class="rx-comment-head">
+            <span class="rx-avatar-sm" style="background:#ffb703">糕</span>
+            <b>桂花糕不加糖</b>
+            <span class="rx-comment-num">★★★★☆</span>
+          </div>
+          <p>整体不错，偶尔会觉得更新节奏有点紧，希望编辑部别太累。另外建议手机端把专题入口放得再明显一点，我找了半天才看到。</p>
+          <div class="rx-comment-foot"><span>2 周前</span><span>点赞 143</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUX: news + faq ================= -->
+  <section class="rx-section" id="rxFaq">
+    <div class="rx-wrap">
+      <div class="rx-section-head">
+        <div>
+          <span class="rx-eyebrow">Updates &amp; Help</span>
+          <h2 class="rx-h2">企业动态与帮助中心 · <em>关于这个平台</em></h2>
+          <p class="rx-lead">官方发布、合作信息与常见问题，都在这里集中说明。</p>
+        </div>
+      </div>
+      <div class="rx-aux">
+        <div class="rx-news-card">
+          <h3>企业动态</h3>
+          <ul class="rx-news-list">
+            <li>
+              <span class="rx-news-date">11-20</span>
+              <div>
+                <h4>「吃瓜雷达」升级为日更栏目</h4>
+                <p>栏目结构重排，新增事件时间轴与来源标注，单个条目的核对流程延长至两轮。</p>
+              </div>
+            </li>
+            <li>
+              <span class="rx-news-date">11-14</span>
+              <div>
+                <h4>玩家故事第二季启动征集</h4>
+                <p>面向所有普通玩家开放投稿，不设粉丝门槛，入选者将获得拍摄支持与署名权益。</p>
+              </div>
+            </li>
+            <li>
+              <span class="rx-news-date">11-06</span>
+              <div>
+                <h4>口碑榜评分细则正式公开</h4>
+                <p>五个维度、二十条细则全部上线，并开放玩家复核通道，接受逐条质询。</p>
+              </div>
+            </li>
+            <li>
+              <span class="rx-news-date">10-28</span>
+              <div>
+                <h4>编辑部与三家内容机构达成合作</h4>
+                <p>围绕内容共创、版权保护与创作者培训展开长期协作，首批合作内容将于十二月上线。</p>
+              </div>
+            </li>
+          </ul>
+          <h3 style="margin-top:22px;">合作与共创伙伴</h3>
+          <div class="rx-partners">
+            <span class="rx-partner">星火创作联盟</span>
+            <span class="rx-partner">玩家影像计划</span>
+            <span class="rx-partner">城南剪辑社</span>
+            <span class="rx-partner">独立游戏观察站</span>
+            <span class="rx-partner">青年创作者基金</span>
+          </div>
+        </div>
+
+        <div class="rx-faq">
+          <div class="rx-news-card" style="margin-bottom:16px;">
+            <h3>常见问题</h3>
+            <details open>
+              <summary>r星每日吃瓜的内容是怎么核对来源的？</summary>
+              <p>每条爆料类内容至少需要两个独立信息源，能附官方原片或公开记录的优先采用。涉及争议的事件会同时收录多方立场，并在画面中标注时间戳。</p>
+            </details>
+            <details>
+              <summary>普通玩家可以投稿吗？有什么要求？</summary>
+              <p>可以。我们不设粉丝门槛，只需要原创、有具体细节、能提供基本素材说明。投稿入口在页面底部与页头按钮中，审核周期通常为五到七个工作日。</p>
+            </details>
+            <details>
+              <summary>口碑榜的评分依据是什么？</summary>
+              <p>评分分为内容完整度、信息准确度、表达清晰度、社区反馈与制作质量五个维度，每一项都有可对照的细则，玩家可以在复核通道提出异议。</p>
+            </details>
+            <details>
+              <summary>站内视频可以转载或二次剪辑吗？</summary>
+              <p>站内原创内容版权归作者与平台共同所有。个人非商业用途的转载需注明出处与作者，商业用途或二次剪辑请先通过合作邮箱取得书面授权。</p>
+            </details>
+            <details>
+              <summary>发现内容有误应该怎么反馈？</summary>
+              <p>每条内容下方都有反馈按钮，也可以在帮助中心提交更正说明。核实后我们会在二十四小时内更新内容，并在页面显著位置标注更正记录。</p>
+            </details>
+            <details>
+              <summary>如何加入签约创作者计划？</summary>
+              <p>连续投稿三次以上、内容质量稳定且无版权争议的作者，会收到编辑部的邀约邮件。签约后可以获得拍摄支持、选题共建与流量推荐。</p>
+            </details>
+          </div>
+          <div class="rx-news-card">
+            <h3>联系与投稿</h3>
+            <p style="font-size:13px;color:#aeb9d4;margin-bottom:12px;">投稿、合作、版权与反馈，欢迎随时联系编辑部。我们通常在两个工作日内回复。</p>
+            <button class="rx-btn rx-btn-primary" type="button" data-modal="submit" style="width:100%;margin-bottom:10px;">打开投稿表单</button>
+            <button class="rx-btn rx-btn-ghost" type="button" data-modal="contact" style="width:100%;">查看联系方式</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rx-cta">
+    <div>
+      <h2>每天来一次，把热闹看明白</h2>
+      <p>r星每日吃瓜官方网站持续运营中，欢迎收藏、分享，也欢迎把你的故事交给我们记录。</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="rx-btn rx-btn-primary" type="button" data-copy>复制本站链接</button>
+      <a href="#rxHot" class="rx-btn rx-btn-ghost">回到热门</a>
+    </div>
+  </div>
+</main>
+
+<footer class="rx-footer">
+  <div class="rx-wrap">
+    <div class="rx-footer-grid">
+      <div>
+        <div class="rx-brand" style="margin-bottom:6px;">
+          <span class="rx-brand-mark">R</span>
+          <span>
+            <span class="rx-brand-name">r星每日吃瓜</span><br>
+            <span class="rx-brand-sub">DAILY MELON</span>
+          </span>
+        </div>
+        <p class="rx-footer-desc">r星每日吃瓜官方网站 · 面向游戏娱乐领域的原创视频内容品牌。我们以专业、品质与真实为底线，持续为玩家社区提供高清精品内容与可信赖的观察视角。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#rxHot">今日热门吃瓜</a></li>
+          <li><a href="#rxAnalysis">关键词深度解析</a></li>
+          <li><a href="#rxTopics">专题企划</a></li>
+          <li><a href="#rxAuthors">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于平台</h4>
+        <ul>
+          <li><a href="#rxComments">玩家评价</a></li>
+          <li><a href="#rxFaq">企业动态</a></li>
+          <li><a href="#rxFaq">帮助中心</a></li>
+          <li><a href="#rxTop">返回顶部</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与共建</h4>
+        <ul>
+          <li><a href="#" data-modal="submit">投稿入口</a></li>
+          <li><a href="#" data-modal="contact">合作联系</a></li>
+          <li><a href="#" data-modal="contact">版权说明</a></li>
+          <li><a href="#" data-report>内容反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rx-footer-bottom">
+      <span>© 2026 r星每日吃瓜 版权所有 · 官方网站 · 持续运营中</span>
+      <span>内容均为原创或已获授权 · 京ICP备2026018820号</span>
+    </div>
+  </div>
+</footer>
+
+<div class="rx-toast" id="rxToast" role="status" aria-live="polite"></div>
+
+<div class="rx-modal" id="rxModal" role="dialog" aria-modal="true" aria-labelledby="rxModalTitle">
+  <div class="rx-modal-box">
+    <button class="rx-modal-close" type="button" data-close aria-label="关闭弹窗">×</button>
+    <h3 id="rxModalTitle">投稿 / 报名</h3>
+    <p id="rxModalDesc">填写基本信息，编辑部会在两个工作日内与你联系。</p>
+    <form id="rxModalForm">
+      <div class="rx-field">
+        <label for="rxName">你的昵称</label>
+        <input id="rxName" type="text" placeholder="例如：橙子汽水" required>
+      </div>
+      <div class="rx-field">
+        <label for="rxType">投稿类型</label>
+        <select id="rxType">
+          <option>玩家故事 / 访谈线索</option>
+          <option>吃瓜线索 / 事件投稿</option>
+          <option>原创视频作品</option>
+          <option>合作与共创咨询</option>
+        </select>
+      </div>
+      <div class="rx-field">
+        <label for="rxMsg">简单说说内容</label>
+        <textarea id="rxMsg" rows="3" placeholder="一句话讲清这条线索或这个故事的看点"></textarea>
+      </div>
+      <button class="rx-btn rx-btn-primary" type="submit" style="width:100%;">提交</button>
+    </form>
+  </div>
+</div>
+
+<button class="rx-backtop" type="button" id="rxBackTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- toast ---------- */
+  var toastEl = document.getElementById('rxToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('is-show'); }, 2200);
+  }
+
+  /* ---------- notice rotation ---------- */
+  var noticeLines = Array.prototype.slice.call(document.querySelectorAll('.rx-notice-line'));
+  var noticeIndex = 0;
+  function showNotice(i){
+    noticeLines.forEach(function(el, idx){ el.classList.toggle('is-on', idx === i); });
+    noticeIndex = i;
+  }
+  var noticeTimer = setInterval(function(){
+    showNotice((noticeIndex + 1) % noticeLines.length);
+  }, 5200);
+  var noticeNext = document.getElementById('rxNoticeNext');
+  if(noticeNext){
+    noticeNext.addEventListener('click', function(){
+      clearInterval(noticeTimer);
+      showNotice((noticeIndex + 1) % noticeLines.length);
+      noticeTimer = setInterval(function(){
+        showNotice((noticeIndex + 1) % noticeLines.length);
+      }, 5200);
+    });
+  }
+
+  /* ---------- mobile nav ---------- */
+  var burger = document.getElementById('rxBurger');
+  var mobileNav = document.getElementById('rxMobileNav');
+  if(burger && mobileNav){
+    burger.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('is-open');
+      burger.textContent = open ? '×' : '☰';
+      burger.setAttribute('aria-label', open ? '收起导航' : '展开导航');
+    });
+    mobileNav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        mobileNav.classList.remove('is-open');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  /* ---------- search suggestion ---------- */
+  var search = document.getElementById('rxSearch');
+  var searchTip = document.getElementById('rxSearchTip');
+  var searchPool = [
+    '年度十大反转事件','发布会逐帧拆解','评论区三个夜晚','口碑榜评分细则',
+    '玩家故事第二季','时间线复盘','新人创作者首播','吃瓜雷达日更'
+  ];
+  if(search && searchTip){
+    search.addEventListener('input', function(){
+      var q = search.value.trim();
+      if(!q){
+        searchTip.classList.remove('is-show');
+        return;
+      }
+      var hits = searchPool.filter(function(item){ return item.indexOf(q) !== -1; });
+      searchTip.classList.add('is-show');
+      if(hits.length === 0){
+        searchTip.innerHTML = '暂时没有匹配「' + q.replace(/[<>&]/g,'') + '」的条目，试试更短的关键词';
+      }else{
+        searchTip.innerHTML = '为你找到 <b>' + hits.length + '</b> 条相关线索：' + hits.slice(0,4).map(function(h){ return '「' + h + '」'; }).join(' ');
+      }
+    });
+    search.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        if(search.value.trim()){
+          toast('已按「' + search.value.trim() + '」整理相关线索');
+        }
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.rx-search')){
+        searchTip.classList.remove('is-show');
+      }
+    });
+  }
+
+  /* ---------- like / save ---------- */
+  document.addEventListener('click', function(e){
+    var likeBtn = e.target.closest('[data-like]');
+    if(likeBtn){
+      var on = likeBtn.classList.toggle('is-like');
+      likeBtn.textContent = on ? '👍 已点赞' : '👍 点赞';
+      toast(on ? '已点赞，感谢支持原创内容' : '已取消点赞');
+      return;
+    }
+    var saveBtn = e.target.closest('[data-save]');
+    if(saveBtn){
+      var saved = saveBtn.classList.toggle('is-save');
+      saveBtn.textContent = saved ? '♥ 已收藏' : '♡ 收藏';
+      toast(saved ? '已加入收藏夹' : '已从收藏夹移除');
+      return;
+    }
+    var copyBtn = e.target.closest('[data-copy]');
+    if(copyBtn){
+      e.preventDefault();
+      var link = 'https://rstar-daily-melon.example.com/';
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(link).then(function(){
+          toast('链接已复制，欢迎分享给同好');
+        }).catch(function(){
+          toast('复制失败，请手动选择地址栏链接');
+        });
+      }else{
+        toast('链接已准备好，请手动复制地址栏');
+      }
+      return;
+    }
+    var reportBtn = e.target.closest('[data-report]');
+    if(reportBtn){
+      e.preventDefault();
+      toast('反馈入口已记录，编辑部会尽快核实');
+      return;
+    }
+    var modalTrigger = e.target.closest('[data-modal]');
+    if(modalTrigger){
+      e.preventDefault();
+      openModal(modalTrigger.getAttribute('data-modal'));
+      return;
+    }
+    if(e.target.closest('[data-close]')){
+      closeModal();
+    }
+  });
+
+  /* ---------- modal ---------- */
+  var modal = document.getElementById('rxModal');
+  var modalTitle = document.getElementById('rxModalTitle');
+  var modalDesc = document.getElementById('rxModalDesc');
+  var modalForm = document.getElementById('rxModalForm');
+  function openModal(kind){
+    if(!modal) return;
+    if(kind === 'contact'){
+      modalTitle.textContent = '联系编辑部';
+      modalDesc.textContent = '投稿邮箱：editor@rstar-daily.example.com ｜ 合作邮箱：partner@rstar-daily.example.com ｜ 处理时间：工作日 9:30–18:30。';
+      modalForm.style.display = 'none';
+    }else{
+      modalTitle.textContent = '投稿 / 报名';
+      modalDesc.textContent = '填写基本信息，编辑部会在两个工作日内与你联系。';
+      modalForm.style.display = 'block';
+    }
+    modal.classList.add('is-open');
+  }
+  function closeModal(){
+    if(modal) modal.classList.remove('is-open');
+  }
+  if(modal){
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeModal();
+    });
+  }
+  if(modalForm){
+    modalForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('rxName').value.trim();
+      closeModal();
+      modalForm.reset();
+      toast(name ? ('感谢 ' + name + '，投稿已提交，我们会尽快回复') : '投稿已提交，感谢你的支持');
+    });
+  }
+
+  /* ---------- back to top ---------- */
+  var backTop = document.getElementById('rxBackTop');
+  window.addEventListener('scroll', function(){
+    if(!backTop) return;
+    if(window.scrollY > 420){
+      backTop.classList.add('is-show');
+    }else{
+      backTop.classList.remove('is-show');
+    }
+  }, {passive:true});
+  if(backTop){
+    backTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  /* ---------- count up ---------- */
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  function runCounters(){
+    counters.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var start = performance.now();
+      var duration = 1100;
+      function step(now){
+        var p = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var heroStats = document.querySelector('.rx-hero-stats');
+    if(heroStats){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            runCounters();
+            io.disconnect();
+          }
+        });
+      }, {threshold:0.4});
+      io.observe(heroStats);
+    }else{
+      runCounters();
+    }
+  }else{
+    runCounters();
+  }
+})();
+</script>
+</body>
+            </html>
